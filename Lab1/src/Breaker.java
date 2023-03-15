@@ -1,14 +1,11 @@
 import java.util.Arrays;
 
 public class Breaker extends Thread {
-//    public volatile boolean isStop = false;
-
     private MyThread[] myThreads;
 
     public Breaker(MyThread[] myThreads) {
         this.myThreads = myThreads;
     }
-
 
     @Override
     public void run(){
