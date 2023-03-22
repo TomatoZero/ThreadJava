@@ -48,11 +48,9 @@ public class MyArrClass {
         for(; j < threadNum; i+= minDimension, j++){
             if(array.length % threadNum != 0 & j == threadNum - 1) {
                 minThread = new ThreadMin(i, array.length - 1, this);
-//                System.out.println("Count " + ((array.length - 1) - i));
             }
             else {
                 minThread = new ThreadMin(i, i + minDimension, this);
-//                System.out.println("Count " + ((i + minDimension) - i));
             }
 
             thread[j] = new Thread(minThread);

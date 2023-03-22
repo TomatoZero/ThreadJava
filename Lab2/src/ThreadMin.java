@@ -6,8 +6,6 @@ public class ThreadMin implements Runnable{
         this.startIndex = startIndex;
         this.endIndex = endIndex;
         this.arr = arr;
-
-//        System.out.println("Count: " + (endIndex - startIndex));
     }
 
     @Override
