@@ -5,7 +5,7 @@ public class Main {
         MyArrClass arr = new MyArrClass(4000000);
 
         startTyme = System.nanoTime();
-        int[] a = arr.ParallelMin(50);
+        int[] a = arr.ParallelMin(3);
         endTyme = System.nanoTime();
         System.out.println("Parallel: min = " + a[0] + " min index: " + a[1] + " Time: " + (endTyme - startTyme));
 

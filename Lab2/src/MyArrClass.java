@@ -40,20 +40,16 @@ public class MyArrClass {
     public int[] ParallelMin(int threadNum){
 
         int minDimension = array.length / threadNum;
-        Thread[] thread;
-        if(array.length % threadNum == 0)
-            thread = new Thread[threadNum];
-        else
-            thread = new Thread[threadNum + 1];
+        Thread[] thread = new Thread[threadNum];
 
         int i = 0, j = 0;
+        ThreadMin minThread;
         for(; j < threadNum; i+= minDimension, j++){
-            ThreadMin minThread = new ThreadMin(i, i + minDimension, this);
-            thread[j] = new Thread(minThread);
-        }
+            if(array.length % threadNum == 0 && j == threadNum - 1)
+                minThread = new ThreadMin(i, array.length - 1, this);
+            else
+                minThread = new ThreadMin(i, i + minDimension, this);
 
-        if(array.length % threadNum != 0) {
-            ThreadMin minThread = new ThreadMin(i, array.length - 1, this);
             thread[j] = new Thread(minThread);
         }
 
