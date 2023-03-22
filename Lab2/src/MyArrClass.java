@@ -11,14 +11,15 @@ public class MyArrClass {
             array[i] = i;
         }
 
-        array[4000000 - 2] = -13;
+        array[4000000 - 1] = -13;
+        System.out.println("Min element: " + array[4000000 - 1]);
     }
 
     public int[] partMin(int startIndex, int endIndex){
         int min = Integer.MAX_VALUE;
         int index = 0;
 
-        for(int i = startIndex; i < endIndex; i++){
+        for(int i = startIndex; i <= endIndex; i++){
             if(array[i] < min) {
                 min = array[i];
                 index = i;
@@ -45,10 +46,14 @@ public class MyArrClass {
         int i = 0, j = 0;
         ThreadMin minThread;
         for(; j < threadNum; i+= minDimension, j++){
-            if(array.length % threadNum == 0 && j == threadNum - 1)
+            if(array.length % threadNum != 0 & j == threadNum - 1) {
                 minThread = new ThreadMin(i, array.length - 1, this);
-            else
+//                System.out.println("Count " + ((array.length - 1) - i));
+            }
+            else {
                 minThread = new ThreadMin(i, i + minDimension, this);
+//                System.out.println("Count " + ((i + minDimension) - i));
+            }
 
             thread[j] = new Thread(minThread);
         }
