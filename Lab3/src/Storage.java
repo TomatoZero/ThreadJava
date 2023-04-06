@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 
 public class Storage {
-    private Semaphore access;
-    private Semaphore empty;
-    private Semaphore full;
-    private ArrayList<String> storage = new ArrayList<>();
+    private final Semaphore access;
+    private final Semaphore empty;
+    private final Semaphore full;
+    private final ArrayList<String> storage = new ArrayList<>();
 
     public Storage(int storageSize) {
         full = new Semaphore(storageSize);
@@ -16,13 +16,11 @@ public class Storage {
     public String TakeItem(){
         String item = storage.get(0);
         storage.remove(0);
-        System.out.println("Take: " + item);
         return item;
     }
 
     public void PutItem(String item){
         storage.add(item);
-        System.out.println("Put: " + item);
     }
 
     public void AccessAcquire() {   //--
