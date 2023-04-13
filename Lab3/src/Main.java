@@ -1,15 +1,14 @@
 public class Main {
     public static void main(String[] args) {
-        Storage storage = new Storage(3);
-        int consumerNum = 15;
-        int producerNum = 6;
+        Storage storage = new Storage(12);
+        int consumerNum = 6;
+        int producerNum = 4;
 
         int consumerProductNum = 2;
-        int producerProductNum = 5;
+        int producerProductNum = 3;
 
         Consumer[] consumers = new Consumer[consumerNum];
         Thread[] consumersThread = new Thread[consumerNum];
-//        Producer[] producers = new Producer[producerNum];
 
         for(int i = 0; i < consumers.length; i++){
             consumers[i] = new Consumer(storage, consumerProductNum, i);
